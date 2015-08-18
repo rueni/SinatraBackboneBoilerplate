@@ -1,0 +1,41 @@
+<h3>Exercise 4</h3>
+<h4>Each method of Underscore</h4>
+
+<p>
+Using the .each method of underscorejs
+</p>
+
+
+<script type="text/javascript">
+  var woot = woot || {};
+  woot.log = function(key) {
+      console.log(key);
+  }
+  // mimics Collection.each
+  // http://underscorejs.org/#each
+  // args:
+  // _.each(list, iteratee, [context])
+  _.each(['Aldrin', 'Armstrong', 'Grissom', 'Hadfield'], woot.log);
+  // make a super string using Template (same syntax as ERB)
+
+  // 1. Create a data object...
+  // ...or use one from an Ajax call?
+  var data = {
+      name: 'Tom',
+      hobby: 'learning JS',
+      beer: '3 Floyds'
+  };
+
+  // 2. Build a template
+  // call it superString
+  // check out that <%= variable_name %>
+  var superString = _.template("<%= name %> really enjoys a <%= beer %> while <%= hobby %>");
+  console.log(superString);
+
+  // 3. Super string is now a template function. It accepts one argument: a data object with keys that correspond to the <%= variable_name %>
+  var compiledTemplate = superString(data);
+
+  // 4. Log the template
+  console.log(compiledTemplate);
+
+</script>

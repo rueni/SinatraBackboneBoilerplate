@@ -1,0 +1,32 @@
+<h3>Exercise 2</h3>
+<h4>How to render a template</h4>
+<ol>
+  <li>Create a template in a script tag using the underscore escape method from exercise 1</li>
+  <li>Declare a variable and set it to the template using jQuery</li>
+  <li>Create a model and make sure (template key = model key)</li>
+  <li>Create the underscore template by declaring another variable and use the _.underscore method on the variable from step 2</li>
+  <li>Use jQuery with an empty tag and the .html and bind the underscore template from step 4 to the model from step 3 </li>
+</ol>
+
+
+<h5>Output:</h5>
+<p id="content"></p>
+
+<a href="/">Home</a> <a href="/3">Next</a>
+
+<script type="text/javascript" id="tpl">
+  The quick brown <strong><%%= animal %></strong> jumped over the <strong><%%= adjective %></strong> dog.
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // declare a template string
+    var template = $('#tpl').html();
+    var data = { animal: 'koala', adjective: 'hyperactive'};
+    var tpl = _.template(template); // create a function with
+      // an argument of a data object (aka a model.. soon)
+      // var renderedTemplate = tpl(data);
+      // console.log(tpl(data));
+      $('#content').html(tpl(data));
+  });
+</script>

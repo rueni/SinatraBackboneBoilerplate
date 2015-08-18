@@ -1,0 +1,44 @@
+<h3>Exercise 3</h3>
+<h4>More underscore practice iterating through an array - plain JS and jQuery for DOM manipulation</h4>
+
+<p>
+  An example of iterating through an array using the underscore template
+</p>
+
+
+<div class="empty-section-tag">
+  <p>Blank section tag to render our data using jQuery</p>
+  <section class='article-list'></section>
+</div>
+
+<div class="empty-script-tag">
+  <p>Hidden script tag with our underscore template below</p>
+  <script type='text/template' id='story-template'>
+    <li><strong><%%= name %></strong> and it was <strong><%%= priority %></strong></li>
+  </script>
+</div>
+
+<a href="/">Home</a>
+
+<script type="text/javascript">
+  var stories = [
+  {name: 'Sonju took over the world', priority: 'AWESOME'},
+  {name: 'Brad and Isaac buy out Last.fm', priority: 'BODACIOUS'},
+  {name: 'David Hayes reaches the moon', priority: 'RADICAL'},
+  {name: 'James goes one day without falling', priority: 'WIN'},
+  {name: 'Billionaire Kate buys GChat', priority: 'MOST EXCELLENT'},
+  {name: 'Tim Rourke replaces Slack with RChat', priority: 'KICKASS'}
+  ];
+
+  // using underscore...
+  // how can I create a re-usable template to render all of these?
+  // I know I need to loop through the array...
+  $(document).ready(function(){
+    var template = $('#story-template').html();
+    var story_template = _.template(template);
+    for (var story in stories) {
+      $('.article-list').append(story_template(stories[story]))
+    };
+  });
+
+</script>

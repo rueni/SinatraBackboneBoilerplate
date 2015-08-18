@@ -1,0 +1,26 @@
+<h3>Exercise 1</h3>
+<h4>How to Break ERB</h4>
+
+<p>
+  Solution: Escape underscore variables with double percent symbols.<br>
+  Ruby doesn't expect a Ruby variable... and Underscore + Ruby can coexist.
+</p>
+
+<p>
+  <ul>
+    <li>This will <strong>BREAK:</strong>  The quick brown <code><%%= animal %></code> jumped over the <code><%%= adjective %></code> dog.</li>
+    <li>This will <strong>WORK:</strong>  The quick brown <code><%%%= animal %></code> jumped over the <code><%%%= adjective %></code> dog.</li>
+  </ul>
+</p>
+<a href="/">Back</a>  <a href="/2">Next</a>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+  });
+</script>
+
+
+<script type="text/javascript" id="tpl">
+  The quick brown <strong><%%= animal %></strong> jumped over the <strong><%%= adjective %></strong> dog.
+</script>
