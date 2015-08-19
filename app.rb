@@ -20,3 +20,11 @@ end
 get '/4' do
   erb :four
 end
+
+get '/5' do
+  erb :five
+end
+
+get '/6' do
+  erb :six
+end

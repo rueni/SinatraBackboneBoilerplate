@@ -5,6 +5,7 @@
 Using the .each method of underscorejs
 </p>
 
+<a href="/">Home</a>
 
 <script type="text/javascript">
   var woot = woot || {};
@@ -28,11 +29,11 @@ Using the .each method of underscorejs
 
   // 2. Build a template
   // call it superString
-  // check out that <%= variable_name %>
-  var superString = _.template("<%= name %> really enjoys a <%= beer %> while <%= hobby %>");
+  // check out that <%%= variable_name %>
+  var superString = _.template("<%%= name %%> really enjoys a <%%= beer %> while <%%= hobby %>");
   console.log(superString);
 
-  // 3. Super string is now a template function. It accepts one argument: a data object with keys that correspond to the <%= variable_name %>
+  // 3. Super string is now a template function. It accepts one argument: a data object with keys that correspond to the <%%= variable_name %>
   var compiledTemplate = superString(data);
 
   // 4. Log the template

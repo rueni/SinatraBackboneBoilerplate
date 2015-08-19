@@ -1,0 +1,39 @@
+<h3>Exercise 6</h3>
+<h4>Backbone Views</h4>
+<a href="/">Home</a>
+
+<section id="container1"></section>
+<section id="container2"></section>
+
+<script type="text/javascript">
+
+  var app = app || {};
+
+  app.listItemView = Backbone.View.extend({
+    initialize: function() {
+      console.log('the view has arrived');
+      this.render();
+      console.log('Content should be rendered in');
+      console.log(this.$el)
+    },
+    render: function() {
+      console.log('Here is a goat');
+      this.$el.append('<img src="http://animalsglobe.com/wp-content/uploads/2015/05/mountain-goats-close-stare.jpg" width=50%/>')
+    }
+  });
+
+    var listItem1 = new app.listItemView({
+      el: $('#container1')
+    });
+///////////////////////////////////////////////////////////////////////////////
+
+    app.listItemView = Backbone.View.extend
+    ({
+      initialize: function() {this.render();},
+      render: function() { this.$el.append('<img src="https://www.extension.org/sites/default/files/Youth.png" width=50%/>') }
+    });
+
+    var listItem2 = new app.listItemView({
+      el :$('#container2')
+    });
+</script>
