@@ -1,8 +1,42 @@
 <h3>Exercise 4</h3>
-<h4>Intro to Backbone Collection</h4>
+<h4>Using Collections</h4>
 
 <p>
-  A collection inherits from models, and has additional methods baked in, such as 'Create'.  It connects directly to the RESTful API and 
+  A collection inherits from models, and has additional methods baked in, such as 'Create'.  It connects directly to the RESTful API and has two-way binding with realtime updates from the server to the client and vice versa.
 </p>
 
 <a href="/">Home</a>
+
+<script type="text/javascript">
+  var insta = insta || {};
+
+  insta.model = Backbone.Model.extend({
+    initialize: function() {
+      console.log('An Instafake with an id of ' + this.get('id') + ' was just created.');
+      this.fetch();
+    }
+  });
+
+  insta.collection = Backbone.Collection.extend({
+    model: insta.model,
+    url: '/api/instafake',
+    initialize: function() {
+      console.log('Starting our collection, now.')
+    }
+  });
+
+  var photosCollection = new insta.collection();
+    photosCollection.fetch();
+
+  setInterval(function() {
+
+    photosCollections.fetch();
+    console.log('Updating db...');
+    console.log('We currently have  ' + photosCollection.models.length + ' models');
+    console.log('end update')
+  }, 5000);
+
+  photosCollection.create({username: 'batman', post: 'eat my fist', description: 'die die die', hashtags: '#whupass'});
+
+  })
+</script>

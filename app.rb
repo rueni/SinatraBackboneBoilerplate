@@ -49,6 +49,10 @@ get '/model_view' do
   erb :m_three
 end
 
+get '/model_collections' do
+  erb :m_four
+end
+
 ################### RESTFUL API ###################
 #### /api/instafake
 
@@ -64,30 +68,34 @@ end
 
 # Create
 post '/api/instafake' do
-  InstagramModel.create(params).to_json
+  request_body = JSON.parse(request.body.read.to_s)
+  InstagramModel.create(request_body).to_json
 end
 
 # Update
 put 'api/instafake/:id' do
+  request_body = JSON.parse(request.body.read.to_s)
   @insta = InstagramModel.find(params[:id])
-  @insta.username = params[:username]
-  @insta.post = params[:post]
-  @insta.description = params[:description]
-  @insta.hastags = params[:hashtags]
+  @insta.username = request_body[:username]
+  @insta.post = request_body[:post]
+  @insta.description = request_body[:description]
+  @insta.hashtags = request_body[:hashtags]
   @insta.save
   @insta.to_json
 end
 patch 'api/instafake/' do
+  request_body = JSON.parse(request.body.read.to_s)
   @insta = InstagramModel.find(params[:id])
-  @insta.username = params[:username]
-  @insta.post = params[:post]
-  @insta.description = params[:description]
-  @insta.hastags = params[:hashtags]
+  @insta.username = request_body[:username]
+  @insta.post = request_body[:post]
+  @insta.description = request_body[:description]
+  @insta.hashtags = request_body[:hashtags]
   @insta.save
   @insta.to_json
 end
 
 # Delete
 delete 'api/instafake/:id' do
-  InstagramModel.destroy(params[:id]).to_json
+  request_body = JSON.parse(request.body.read.to_s)
+  InstagramModel.destroy(request_body[:id]).to_json
 end
