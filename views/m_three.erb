@@ -1,0 +1,38 @@
+<h3>Exercise 3</h3>
+<h4>Rendering Model Attributes with a View</h4>
+
+<a href="/">Home</a>
+
+<div class="movie"></div>
+
+<script type="text/javascript">
+  var movieApp = movieApp || {};
+
+///////////////////////////////////////////////////////////
+  movieApp.movieView = Backbone.View.extend({
+    initialize: function() {
+      var self = this;
+      console.log('movieView ready');
+      this.model.on('change', function(){
+        self.render();
+      });
+    },
+    render: function() {
+      var data = this.model.attributes;
+      this.$el.html('Movie: ' + data.Title + ' was released in ' + data.Year);
+    }
+  });
+///////////////////////////////////////////////////////////
+  movieApp.movieModel = Backbone.Model.extend({
+      url: 'http://www.omdbapi.com/?t=Lost+in+Translation&y=&plot=short&r=json'
+    });
+///////////////////////////////////////////////////////////
+  $(document).ready(function(){
+    var movieModel = new movieApp.movieModel();
+    var movieView = new movieApp.movieView({
+      el: $('.movie'),
+      model: movieModel
+    });
+  movieModel.fetch();
+  });
+</script>

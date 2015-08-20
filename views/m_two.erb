@@ -1,0 +1,25 @@
+<h3>Exercise 2</h3>
+<h4>Making a model</h4>
+
+<p>Create a namespace of your choosing, then create a model with a URL to a movie some on OMDB.  Then fetch the data and use the on.change() event to log in the console the model.attributes</p>
+
+<a href="/">Home</a>
+
+<script type="text/javascript">
+  var movieApp = movie || {};
+
+  movieApp.MovieModel = Backbone.Model.extend({
+    url: 'http://www.omdbapi.com/?t=Lost+in+Translation&y=&plot=short&r=json',
+    initialize: function() {
+      console.log('The model is ready');
+      this.on('change', function(event) {
+        console.log(this.attributes);
+        console.log('a change in the model was detected')
+      });
+    }
+});
+
+  var movie = new movieApp.MovieModel();
+    movie.fetch();
+
+</script>

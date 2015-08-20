@@ -1,0 +1,30 @@
+<h3>Exercise 1</h3>
+<h4>Intro to models in Backbone</h4>
+
+<p>Utilizing the OMDB API to retrieve a model</p>
+
+<a href="/">Home</a>
+
+<script type="text/javascript">
+  var movieApp = movie || {};
+
+  movieApp.movieModel = Backbone.Model.extend({
+    url: "http://www.omdbapi.com/?t=Point+Break&y=&plot=short&r=json",
+    initialize: function() {
+      console.log('The model is ready');
+      // when the model data changes.... let's fire an event
+      this.on('change', function(event) {
+        // change event implements a design pattern
+        // called Object.observe()
+        // logging the model's attributes
+        console.log(this.attributes)
+        // alert the user via CLI
+        console.log('a change in the model was detected')
+      });
+    }
+  });
+
+  var movie = new movieApp.movieModel();
+    movie.fetch();
+
+</script>

@@ -1,0 +1,43 @@
+<h3>Exercise 6</h3>
+<h4>Re-using Backbone Views</h4>
+<a href="/">Home</a> <a href="/models_intro">Move to Models</a>
+
+<section id="list"></section>
+
+<script type="text/javascript">
+  var app = app || {}
+
+  app.data = [
+    {id: 1, thing: 'I need to do laundry', date:'8/19/2015'},
+    {id: 2, thing: 'I need to do exercise', date:'8/19/2015'},
+    {id: 3, thing: 'I need to do study', date:'8/19/2015'},
+    {id: 4, thing: 'I need to do sleep', date:'8/19/2015'},
+    {id: 5, thing: 'I need to do take dog out for a walk', date:'8/19/2015'},
+    {id: 6, thing: 'I need to do make dinner', date:'8/19/2015'},
+  ];
+
+  app.todoItemView = Backbone.View.extend({
+    initialize: function() {},
+    render: function(dataObject) {
+      this.template = _.template($('#list-template').html());
+      var compiledTemplate = this.template(dataObject)
+      this.$el.append(compiledTemplate);
+    }
+  });
+
+  $(document).ready(function(){
+    var todoItem = new app.todoItemView({
+      el: $('#list')
+    });
+    for (var thing in app.data)
+    todoItem.render(app.data[thing]);
+  });
+</script>
+
+<script type="text/template" id="list-template">
+  <li>
+    #<%%= id %>:
+    <em><%%= thing %></em>;
+    <strong> Due by:</strong> <%%= date %>
+  </li>
+</script>
